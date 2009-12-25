@@ -8,6 +8,7 @@
 
 #import "LocationDumpViewController.h"
 #import "HeavyOperation.h"
+#import "JSON.h"
 
 @implementation LocationDumpViewController
 
@@ -28,11 +29,20 @@
 }
 
 - (IBAction)startUpdating {
+	if (_startTime == nil) {
+		_startTime = [[NSDate date] retain];
+		_updates = [[NSMutableArray arrayWithCapacity:500] retain];		
+	}
+		
 	[_locationManager startUpdatingLocation];
 	[self logMessage:[NSString stringWithFormat:@"startUpdating"]];
 }
 
 - (IBAction)stopUpdating {
+	[_startTime release];
+	_startTime = nil;
+	[_updates release];
+	_updates = nil;
 	[_locationManager stopUpdatingLocation];
 	[self logMessage:[NSString stringWithFormat:@"stopUpdating"]];
 }
@@ -45,6 +55,9 @@
 	[op release];
 }
 
+- (IBAction)getJSON {
+	_textView.text = [_updates JSONRepresentation];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -62,6 +75,8 @@
 }
 
 - (void)dealloc {
+	[_startTime release];
+	[_updates release];
 	[_locationManager stopUpdatingLocation];
 	[_locationManager release];
     [super dealloc];
@@ -69,10 +84,29 @@
 
 #pragma mark -
 
+- (NSDictionary*)locationToDict:(CLLocation*)location {
+	NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:6];
+	[dict setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:@"latitude"];
+	[dict setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"longitude"];
+	[dict setObject:[NSNumber numberWithDouble:location.speed] forKey:@"speed"];
+	[dict setObject:[NSNumber numberWithDouble:location.course] forKey:@"course"];
+	[dict setObject:[NSNumber numberWithDouble:location.horizontalAccuracy] forKey:@"horizontalAccuracy"];	
+	NSTimeInterval timeshift = [[location timestamp] timeIntervalSinceDate:_startTime];
+	[dict setObject:[NSNumber numberWithDouble:timeshift] forKey:@"time"];
+	return dict;
+}
+
 - (void)locationManager:(CLLocationManager *)manager
 	didUpdateToLocation:(CLLocation *)newLocation
 		   fromLocation:(CLLocation *)oldLocation {
-	[self logMessage:[NSString stringWithFormat:@"update from %@ to %@", newLocation, oldLocation]];	
+	NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:2];
+	[dict setObject:[self locationToDict:oldLocation] forKey:@"from"];
+	[dict setObject:[self locationToDict:newLocation] forKey:@"to"];
+	NSTimeInterval timeshift = [[NSDate date] timeIntervalSinceDate:_startTime];
+	[dict setObject:[NSNumber numberWithDouble:timeshift] forKey:@"time"];	 
+	[_updates addObject:dict];
+	
+	[self logMessage:[NSString stringWithFormat:@"update"]];	
 }
 
 - (void)locationManager:(CLLocationManager *)manager

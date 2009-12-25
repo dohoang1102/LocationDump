@@ -13,11 +13,15 @@
 	IBOutlet UITextView * _textView;
 	CLLocationManager * _locationManager;
 	NSOperationQueue * _operationQueue;
+	
+	NSDate * _startTime;
+	NSMutableArray * _updates;
 }
 
 - (IBAction)startUpdating;
 - (IBAction)stopUpdating;
 - (IBAction)runTest;
+- (IBAction)getJSON;
 
 - (void)logMessage:(NSString*)message;
 

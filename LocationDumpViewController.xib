@@ -70,7 +70,7 @@
 					<object class="IBUIButton" id="145063159">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">286</int>
-						<string key="NSFrame">{{20, 412}, {88, 37}}</string>
+						<string key="NSFrame">{{20, 412}, {60, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -99,7 +99,7 @@
 					<object class="IBUIButton" id="829499783">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">287</int>
-						<string key="NSFrame">{{116, 412}, {88, 37}}</string>
+						<string key="NSFrame">{{88, 412}, {60, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -118,7 +118,7 @@
 					<object class="IBUIButton" id="1052054211">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">283</int>
-						<string key="NSFrame">{{212, 412}, {88, 37}}</string>
+						<string key="NSFrame">{{172, 412}, {60, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -127,6 +127,25 @@
 						<reference key="IBUIFont" ref="707652463"/>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Test</string>
+						<reference key="IBUIHighlightedTitleColor" ref="486794107"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="655441914"/>
+					</object>
+					<object class="IBUIButton" id="815559815">
+						<reference key="NSNextResponder" ref="774585933"/>
+						<int key="NSvFlags">283</int>
+						<string key="NSFrame">{{238, 412}, {65, 37}}</string>
+						<reference key="NSSuperview" ref="774585933"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="707652463"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">JSON</string>
 						<reference key="IBUIHighlightedTitleColor" ref="486794107"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -194,6 +213,15 @@
 					</object>
 					<int key="connectionID">18</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">getJSON</string>
+						<reference key="source" ref="815559815"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">21</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -222,8 +250,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="856424151"/>
 							<reference ref="145063159"/>
-							<reference ref="829499783"/>
+							<reference ref="815559815"/>
 							<reference ref="1052054211"/>
+							<reference ref="829499783"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -247,6 +276,11 @@
 						<reference key="object" ref="1052054211"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">19</int>
+						<reference key="object" ref="815559815"/>
+						<reference key="parent" ref="774585933"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -258,6 +292,7 @@
 					<string>10.IBPluginDependency</string>
 					<string>11.IBPluginDependency</string>
 					<string>15.IBPluginDependency</string>
+					<string>19.IBPluginDependency</string>
 					<string>6.IBEditorWindowLastContentRect</string>
 					<string>6.IBPluginDependency</string>
 					<string>9.IBPluginDependency</string>
@@ -266,6 +301,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>LocationDumpViewController</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -290,7 +326,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">18</int>
+			<int key="maxID">21</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -302,12 +338,14 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>getJSON</string>
 							<string>runTest</string>
 							<string>startUpdating</string>
 							<string>stopUpdating</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -320,6 +358,20 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/LocationDumpViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/NSObject+SBJSON.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/SBJsonWriter.h</string>
 					</object>
 				</object>
 			</object>
